@@ -14,5 +14,14 @@
       ],
       "key": "M"
     }
-  ]
+  ],
+  "templater-obsidian:Templates/Zettle Template.md": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "I"
+    }
+  ],
+  "editor:toggle-italics": []
 }
