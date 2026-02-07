@@ -1,0 +1,266 @@
+{
+  "main": {
+    "id": "0ff3fafd4ef8b032",
+    "type": "split",
+    "children": [
+      {
+        "id": "2abe3f1e37d7320e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "629a9a6cdb1fba3c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Welcome.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Welcome"
+            }
+          },
+          {
+            "id": "d9cef27340fb4983",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Welcome.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Welcome"
+            }
+          },
+          {
+            "id": "5e2c8eb03b533e9a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "3 Resources/Filmmaking/Motion Blur.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Motion Blur"
+            }
+          },
+          {
+            "id": "1cfc1b74549f46ca",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "1 Projects/Holiday 2024/Sweden is a great country to hike in.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Sweden is a great country to hike in"
+            }
+          },
+          {
+            "id": "9c54ed7e7967befc",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "0 Inbox/neovimnote.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "neovimnote"
+            }
+          }
+        ],
+        "currentTab": 4
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "244ea014f137cdcd",
+    "type": "split",
+    "children": [
+      {
+        "id": "fd38c606efca019f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d804faab0e516f1f",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "0c98db4d9a3fb131",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "5f315377e43e3df6",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "db5daf69d70faecf",
+    "type": "split",
+    "children": [
+      {
+        "id": "29cc940891f4e78e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "78718c63046bd774",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Welcome.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Welcome"
+            }
+          },
+          {
+            "id": "7d3bca6d09be5e78",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Welcome.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Welcome"
+            }
+          },
+          {
+            "id": "8f6bd46e5ca6ce58",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "7d24260c35744760",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "723a91e6bac303cf",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Welcome.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Welcome"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "9c54ed7e7967befc",
+  "lastOpenFiles": [
+    "2 Areas/Tech Blog/Article - New AG for Containers in Azure.md",
+    "0 Inbox/neovimnote.md",
+    "neovimnote.md",
+    "3 Resources/Filmmaking/Filmmaking.md",
+    "1 Projects/Holiday 2024/Planning Holiday 2024.md",
+    "1 Projects/Holiday 2024/Sweden is a great country to hike in.md",
+    "2 Areas/Tech Blog",
+    "3 Resources/Filmmaking/Motion Blur.md",
+    "3 Resources/Filmmaking",
+    "1 Projects/Holiday 2024/Idea about Holiday in Norway.md",
+    "1 Projects/Holiday 2024",
+    "1 Projects/Untitled.md",
+    "Untitled.md",
+    "Welcome.md",
+    "PARA.md",
+    "4 Archive",
+    "3 Resources",
+    "2 Areas",
+    "1 Projects",
+    "0 Inbox"
+  ]
+}
