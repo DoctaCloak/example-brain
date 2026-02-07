@@ -23,5 +23,13 @@
       "key": "I"
     }
   ],
-  "editor:toggle-italics": []
+  "editor:toggle-italics": [],
+  "templater-obsidian:Templates/Pure Template.md": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "U"
+    }
+  ]
 }

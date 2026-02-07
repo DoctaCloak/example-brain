@@ -160,9 +160,65 @@
               "icon": "lucide-file",
               "title": "Zettle Template"
             }
+          },
+          {
+            "id": "cec161a633fecf90",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "0 Inbox/Tachycardia.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Tachycardia"
+            }
+          },
+          {
+            "id": "2b04cb00982f1ca9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Templates/Pure Template.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Pure Template"
+            }
+          },
+          {
+            "id": "d6d2ecf22262487a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "0 Inbox/Azure Containers.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Azure Containers"
+            }
+          },
+          {
+            "id": "685f712a6deda935",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2 Areas/Tech Blog/DevOps Containers.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "DevOps Containers"
+            }
           }
         ],
-        "currentTab": 10
+        "currentTab": 14
       }
     ],
     "direction": "vertical"
@@ -326,19 +382,22 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "fd213b7c5d8c181b",
+  "active": "685f712a6deda935",
   "lastOpenFiles": [
-    "0 Inbox/Untitled.md",
+    "0 Inbox/Tachycardia.md",
+    "0 Inbox/Azure Containers.md",
+    "Templates/Zettle Template.md",
+    "Templates/Pure Template.md",
+    "2 Areas/Tech Blog/DevOps Containers.md",
+    "2 Areas/Tech Blog/Article - New AG for Containers in Azure.md",
+    "0 Inbox/Untitled 2.md",
+    "0 Inbox/Tachychardia.md",
+    "0 Inbox/neovimnote.md",
     "0 Inbox/Hello World.md",
     "0 Inbox/Hello.md",
-    "Templates/Zettle Template.md",
-    "0 Inbox/Untitled 2.md",
     "PARA.md",
-    "0 Inbox/Untitled 1.md",
     "Templates",
     "Welcome.md",
-    "0 Inbox/neovimnote.md",
-    "2 Areas/Tech Blog/Article - New AG for Containers in Azure.md",
     "neovimnote.md",
     "3 Resources/Filmmaking/Filmmaking.md",
     "1 Projects/Holiday 2024/Planning Holiday 2024.md",
