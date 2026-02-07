@@ -181,12 +181,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Templates/Pure Template.md",
+                "file": "Templates/Zettle Template.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Pure Template"
+              "title": "Zettle Template"
             }
           },
           {
@@ -209,16 +209,44 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2 Areas/Tech Blog/DevOps Containers.md",
+                "file": "Templates/Zettle Template.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "DevOps Containers"
+              "title": "Zettle Template"
+            }
+          },
+          {
+            "id": "aca6a40107f73c92",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Templates/Zettle Template.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Zettle Template"
+            }
+          },
+          {
+            "id": "c59765b167f3c02a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "0 Inbox/Untitled 1.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Untitled 1"
             }
           }
         ],
-        "currentTab": 14
+        "currentTab": 16
       }
     ],
     "direction": "vertical"
@@ -382,15 +410,17 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "685f712a6deda935",
+  "active": "c59765b167f3c02a",
   "lastOpenFiles": [
+    "Templates/Pure Template.md",
+    "0 Inbox/Untitled 1.md",
+    "Templates/Zettle Template.md",
+    "0 Inbox/Untitled.md",
+    "0 Inbox/Untitled 2.md",
+    "2 Areas/Tech Blog/DevOps Containers.md",
     "0 Inbox/Tachycardia.md",
     "0 Inbox/Azure Containers.md",
-    "Templates/Zettle Template.md",
-    "Templates/Pure Template.md",
-    "2 Areas/Tech Blog/DevOps Containers.md",
     "2 Areas/Tech Blog/Article - New AG for Containers in Azure.md",
-    "0 Inbox/Untitled 2.md",
     "0 Inbox/Tachychardia.md",
     "0 Inbox/neovimnote.md",
     "0 Inbox/Hello World.md",
