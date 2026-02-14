@@ -1,0 +1,9 @@
+{
+  "id": "guided-journal",
+  "name": "Guided Journal",
+  "version": "1.0.0",
+  "minAppVersion": "1.0.0",
+  "description": "A digital guided journal system inspired by Dig Deeper, Better Every Day, and MindJournal. Daily check-ins, weekly planning, monthly goals, and rotating reflective prompts.",
+  "author": "unshakenvoid",
+  "isDesktopOnly": false
+}

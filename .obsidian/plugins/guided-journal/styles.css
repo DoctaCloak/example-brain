@@ -1,0 +1,416 @@
+/* ===== Guided Journal Plugin Styles ===== */
+
+/* --- Emotion Grid --- */
+.gj-emotion-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 8px 0;
+}
+
+.gj-emotion-chip {
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--background-modifier-border);
+  background: var(--background-secondary);
+  color: var(--text-normal);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-transform: capitalize;
+}
+
+.gj-emotion-chip:hover {
+  border-color: var(--interactive-accent);
+  background: var(--background-modifier-hover);
+}
+
+.gj-emotion-selected {
+  background: var(--interactive-accent) !important;
+  color: var(--text-on-accent) !important;
+  border-color: var(--interactive-accent) !important;
+}
+
+/* --- Mood Tracker --- */
+.gj-mood-tracker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+}
+
+.gj-mood-label {
+  font-weight: 600;
+  min-width: 60px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.gj-mood-scale {
+  display: flex;
+  gap: 4px;
+}
+
+.gj-mood-dot {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--background-modifier-border);
+  background: var(--background-secondary);
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+  padding: 0;
+}
+
+.gj-mood-dot:hover {
+  border-color: var(--interactive-accent);
+  transform: scale(1.1);
+}
+
+.gj-mood-active {
+  background: var(--interactive-accent) !important;
+  color: var(--text-on-accent) !important;
+  border-color: var(--interactive-accent) !important;
+}
+
+/* --- Time Tracker --- */
+.gj-time-tracker {
+  padding: 8px 0;
+}
+
+.gj-time-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.gj-time-label {
+  min-width: 100px;
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.gj-time-bar {
+  display: flex;
+  gap: 2px;
+}
+
+.gj-time-segment {
+  width: 40px;
+  height: 30px;
+  border: 1px solid var(--background-modifier-border);
+  background: var(--background-secondary);
+  color: var(--text-muted);
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.gj-time-segment:first-child {
+  border-radius: 4px 0 0 4px;
+}
+
+.gj-time-segment:last-child {
+  border-radius: 0 4px 4px 0;
+}
+
+.gj-time-segment:hover {
+  border-color: var(--interactive-accent);
+}
+
+.gj-time-filled {
+  background: var(--interactive-accent) !important;
+  color: var(--text-on-accent) !important;
+  border-color: var(--interactive-accent) !important;
+}
+
+/* --- Priority Status --- */
+.gj-priorities {
+  padding: 8px 0;
+}
+
+.gj-priority-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.gj-priority-num {
+  font-weight: 700;
+  min-width: 20px;
+  color: var(--text-muted);
+}
+
+.gj-priority-input {
+  flex: 1;
+  padding: 6px 10px;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 6px;
+  background: var(--background-secondary);
+  color: var(--text-normal);
+  font-size: 14px;
+}
+
+.gj-priority-input:focus {
+  border-color: var(--interactive-accent);
+  outline: none;
+}
+
+.gj-priority-status-group {
+  display: flex;
+  gap: 4px;
+}
+
+.gj-priority-btn {
+  padding: 4px 10px;
+  border-radius: 4px;
+  border: 1px solid var(--background-modifier-border);
+  background: var(--background-secondary);
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  color: var(--text-muted);
+}
+
+.gj-priority-btn:hover {
+  border-color: var(--interactive-accent);
+}
+
+.gj-priority-done.gj-priority-active {
+  background: #2d8a4e;
+  color: white;
+  border-color: #2d8a4e;
+}
+
+.gj-priority-delay.gj-priority-active {
+  background: #c07d1a;
+  color: white;
+  border-color: #c07d1a;
+}
+
+.gj-priority-delete.gj-priority-active {
+  background: #c0392b;
+  color: white;
+  border-color: #c0392b;
+}
+
+/* --- Habit Tracker --- */
+.gj-habit-tracker {
+  padding: 8px 0;
+}
+
+.gj-habit-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.gj-habit-table th {
+  padding: 6px 8px;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  color: var(--text-muted);
+  border-bottom: 2px solid var(--background-modifier-border);
+}
+
+.gj-habit-table th:first-child {
+  text-align: left;
+}
+
+.gj-habit-name {
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px;
+}
+
+.gj-habit-cell {
+  text-align: center;
+  padding: 6px;
+}
+
+.gj-habit-check {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid var(--background-modifier-border);
+  margin: 0 auto;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gj-habit-check:hover {
+  border-color: var(--interactive-accent);
+}
+
+.gj-habit-checked {
+  background: var(--interactive-accent) !important;
+  border-color: var(--interactive-accent) !important;
+}
+
+.gj-habit-checked::after {
+  content: '✓';
+  color: var(--text-on-accent);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* --- Calendar Grid --- */
+.gj-calendar {
+  padding: 8px 0;
+}
+
+.gj-calendar-header {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--text-normal);
+}
+
+.gj-calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.gj-calendar-day-header {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  padding: 6px;
+  text-transform: uppercase;
+}
+
+.gj-calendar-cell {
+  text-align: center;
+  padding: 8px 4px;
+  font-size: 13px;
+  border-radius: 4px;
+  color: var(--text-muted);
+}
+
+.gj-calendar-empty {
+  background: transparent;
+}
+
+.gj-calendar-today {
+  background: var(--interactive-accent) !important;
+  color: var(--text-on-accent) !important;
+  font-weight: 700;
+  border-radius: 50%;
+}
+
+.gj-calendar-has-note {
+  cursor: pointer;
+  background: var(--background-secondary);
+  font-weight: 600;
+  color: var(--text-normal);
+}
+
+.gj-calendar-has-note:hover {
+  background: var(--background-modifier-hover);
+}
+
+/* --- Self-Care Grid --- */
+.gj-self-care {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding: 8px 0;
+}
+
+@media (max-width: 600px) {
+  .gj-self-care {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.gj-self-care-card {
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 8px;
+  padding: 12px;
+  background: var(--background-secondary);
+  text-align: center;
+}
+
+.gj-self-care-icon {
+  font-size: 24px;
+  margin-bottom: 4px;
+}
+
+.gj-self-care-label {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.gj-self-care-input {
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 4px;
+  background: var(--background-primary);
+  color: var(--text-normal);
+  font-size: 13px;
+  text-align: center;
+}
+
+.gj-self-care-input:focus {
+  border-color: var(--interactive-accent);
+  outline: none;
+}
+
+/* --- Focus Selector --- */
+.gj-focus-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 8px 0;
+}
+
+.gj-focus-chip {
+  padding: 8px 18px;
+  border-radius: 24px;
+  border: 2px solid var(--background-modifier-border);
+  background: var(--background-secondary);
+  color: var(--text-normal);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.gj-focus-chip:hover {
+  border-color: var(--interactive-accent);
+}
+
+.gj-focus-selected {
+  background: var(--interactive-accent) !important;
+  color: var(--text-on-accent) !important;
+  border-color: var(--interactive-accent) !important;
+}
+
+/* --- Paper Theme Overrides --- */
+.theme-light .gj-emotion-chip,
+.theme-light .gj-priority-input,
+.theme-light .gj-self-care-input {
+  font-family: var(--font-text);
+}
