@@ -1,9 +1,10 @@
 import { MarkdownPostProcessorContext, App } from 'obsidian';
 import { SELF_CARE_CATEGORIES } from '../constants';
+import { getFileFromPath, safeFrontmatterUpdate } from '../utils';
 
 export function registerFocusSelectorProcessor(app: App) {
   return (source: string, el: HTMLElement, ctx: MarkdownPostProcessorContext) => {
-    const file = app.workspace.getActiveFile();
+    const file = getFileFromPath(app, ctx.sourcePath);
     if (!file) return;
 
     const cache = app.metadataCache.getFileCache(file);
@@ -18,10 +19,10 @@ export function registerFocusSelectorProcessor(app: App) {
       });
 
       chip.addEventListener('click', async () => {
-        const currentFile = app.workspace.getActiveFile();
-        if (!currentFile) return;
+        const f = getFileFromPath(app, ctx.sourcePath);
+        if (!f) return;
 
-        await app.fileManager.processFrontMatter(currentFile, (fm) => {
+        await safeFrontmatterUpdate(app, f, (fm) => {
           if (!fm.focus_areas) fm.focus_areas = [];
           const idx = fm.focus_areas.indexOf(area);
           if (idx >= 0) {

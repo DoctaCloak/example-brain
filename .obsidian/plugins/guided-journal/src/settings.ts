@@ -128,6 +128,17 @@ export class GuidedJournalSettingTab extends PluginSettingTab {
         }));
 
     new Setting(containerEl)
+      .setName('Custom emotions')
+      .setDesc('Additional emotions added to the default 36 (comma-separated)')
+      .addTextArea(text => text
+        .setPlaceholder('Nostalgic, Rebellious, Tender')
+        .setValue(this.plugin.settings.customEmotions.join(', '))
+        .onChange(async (value) => {
+          this.plugin.settings.customEmotions = value.split(',').map(e => e.trim()).filter(e => e);
+          await this.plugin.saveSettings();
+        }));
+
+    new Setting(containerEl)
       .setName('Theme')
       .addDropdown(dropdown => dropdown
         .addOption('paper', 'Paper')

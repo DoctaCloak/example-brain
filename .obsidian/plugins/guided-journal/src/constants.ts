@@ -1,3 +1,4 @@
+// 36 emotions for a clean 6x6 grid (fix #3A)
 export const EMOTIONS = [
   // Row 1
   'positive', 'happy', 'hopeful', 'stressed', 'nervous', 'anxious',
@@ -11,8 +12,6 @@ export const EMOTIONS = [
   'calm', 'strong', 'neutral', 'regretful', 'lonely', 'low',
   // Row 6
   'confident', 'restless', 'relieved', 'scared', 'guilty', 'sad',
-  // Row 7
-  'energetic', 'overwhelmed', 'focused',
 ];
 
 export const SELF_CARE_CATEGORIES = [
@@ -21,6 +20,50 @@ export const SELF_CARE_CATEGORIES = [
 
 export const DAYS_OF_WEEK = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 export const DAYS_SHORT = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
+
+// SVG icons for self-care categories (fix #23 - consistent cross-platform)
+export const SELF_CARE_ICONS: Record<string, string> = {
+  'Physical': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V6a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v14"/><path d="M2 20h20"/><path d="M14 12v.01"/></svg>',
+  'Emotional': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>',
+  'Professional': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>',
+  'Social': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
+  'Financial': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="2" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>',
+  'Spiritual': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>',
+};
+
+// Motivational quotes for rotation (fix #11)
+export const QUOTES = [
+  { text: "Let us make our future now, and let us make our dreams tomorrow's reality.", author: "" },
+  { text: "Celebrate even small victories.", author: "H. Jackson Brown Jr." },
+  { text: "Life is long if you know how to use it.", author: "Seneca" },
+  { text: "Most of us spend too much time on what is urgent and not enough time on what is important.", author: "Stephen R. Covey" },
+  { text: "Eat healthily, sleep well, breathe deeply, move harmoniously.", author: "Jean-Pierre Barral" },
+  { text: "Begin anywhere.", author: "John Cage" },
+  { text: "The only journey is the one within.", author: "Rainer Maria Rilke" },
+  { text: "Knowing yourself is the beginning of all wisdom.", author: "Aristotle" },
+  { text: "What lies behind us and what lies before us are tiny matters compared to what lies within us.", author: "Ralph Waldo Emerson" },
+  { text: "The unexamined life is not worth living.", author: "Socrates" },
+  { text: "Be yourself; everyone else is already taken.", author: "Oscar Wilde" },
+  { text: "In the middle of difficulty lies opportunity.", author: "Albert Einstein" },
+  { text: "You must be the change you wish to see in the world.", author: "Mahatma Gandhi" },
+  { text: "The best time to plant a tree was 20 years ago. The second best time is now.", author: "Chinese Proverb" },
+  { text: "Happiness is not something ready made. It comes from your own actions.", author: "Dalai Lama" },
+  { text: "What you get by achieving your goals is not as important as what you become by achieving your goals.", author: "Zig Ziglar" },
+  { text: "It is during our darkest moments that we must focus to see the light.", author: "Aristotle" },
+  { text: "The only way to do great work is to love what you do.", author: "Steve Jobs" },
+  { text: "We are what we repeatedly do. Excellence, then, is not an act, but a habit.", author: "Will Durant" },
+  { text: "Dream big. Start small.", author: "" },
+  { text: "Your body hears everything your mind says.", author: "Naomi Judd" },
+  { text: "Almost everything will work again if you unplug it for a few minutes, including you.", author: "Anne Lamott" },
+  { text: "Self-care is not selfish. You cannot serve from an empty vessel.", author: "Eleanor Brownn" },
+  { text: "A journey of a thousand miles begins with a single step.", author: "Lao Tzu" },
+  { text: "Progress, not perfection.", author: "" },
+  { text: "The greatest glory in living lies not in never falling, but in rising every time we fall.", author: "Nelson Mandela" },
+  { text: "Be patient with yourself. Nothing in nature blooms all year.", author: "" },
+  { text: "You are enough just as you are.", author: "Meghan Markle" },
+  { text: "Small steps every day.", author: "" },
+  { text: "What we think, we become.", author: "Buddha" },
+];
 
 export const DIG_DEEPER_QUESTIONS: string[] = [
   // Self-awareness & Identity

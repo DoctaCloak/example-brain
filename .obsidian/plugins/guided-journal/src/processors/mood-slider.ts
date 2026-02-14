@@ -1,18 +1,19 @@
 import { MarkdownPostProcessorContext, App } from 'obsidian';
+import { getFileFromPath, safeFrontmatterUpdate } from '../utils';
 
-export function registerMoodTrackerProcessor(app: App, frontmatterKey: string = 'mood') {
+// Fix #2: Source content determines which frontmatter key to use.
+// Daily mood-tracker has empty source, weekly has "week_rating" in source.
+export function registerMoodTrackerProcessor(app: App) {
   return (source: string, el: HTMLElement, ctx: MarkdownPostProcessorContext) => {
-    const file = app.workspace.getActiveFile();
+    const file = getFileFromPath(app, ctx.sourcePath);
     if (!file) return;
 
-    const cache = app.metadataCache.getFileCache(file);
-    let currentMood: number = 0;
+    // Determine key from source content
+    const trimmed = source.trim();
+    const frontmatterKey = trimmed === 'week_rating' ? 'week_rating' : 'mood';
 
-    if (frontmatterKey === 'mood') {
-      currentMood = cache?.frontmatter?.mood || 0;
-    } else if (frontmatterKey === 'week_rating') {
-      currentMood = cache?.frontmatter?.week_rating || 0;
-    }
+    const cache = app.metadataCache.getFileCache(file);
+    const currentMood: number = cache?.frontmatter?.[frontmatterKey] || 0;
 
     const container = el.createDiv({ cls: 'gj-mood-tracker' });
     const label = container.createDiv({ cls: 'gj-mood-label' });
@@ -26,18 +27,13 @@ export function registerMoodTrackerProcessor(app: App, frontmatterKey: string = 
         text: String(i),
       });
       dot.addEventListener('click', async () => {
-        const currentFile = app.workspace.getActiveFile();
-        if (!currentFile) return;
+        const f = getFileFromPath(app, ctx.sourcePath);
+        if (!f) return;
 
-        await app.fileManager.processFrontMatter(currentFile, (fm) => {
-          if (frontmatterKey === 'mood') {
-            fm.mood = i;
-          } else {
-            fm.week_rating = i;
-          }
+        await safeFrontmatterUpdate(app, f, (fm) => {
+          fm[frontmatterKey] = i;
         });
 
-        // Update UI
         label.setText(`${i} / 10`);
         scale.querySelectorAll('.gj-mood-dot').forEach((d, idx) => {
           if (idx < i) {

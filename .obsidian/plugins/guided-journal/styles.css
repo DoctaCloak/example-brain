@@ -1,5 +1,44 @@
 /* ===== Guided Journal Plugin Styles ===== */
 
+/* --- Theme: Paper --- */
+.gj-theme-paper .markdown-reading-view {
+  --gj-bg: #fdfbf7;
+  --gj-card-bg: #faf7f0;
+  --gj-border: #e8e0d0;
+  --gj-text: #3d3929;
+  --gj-muted: #8a7e6b;
+  --gj-accent: #6b8f71;
+  --gj-accent-text: #fff;
+  --gj-font: 'Georgia', 'Times New Roman', serif;
+  --gj-radius: 8px;
+}
+
+/* --- Theme: Minimal (uses Obsidian defaults) --- */
+.gj-theme-minimal .markdown-reading-view {
+  --gj-bg: var(--background-primary);
+  --gj-card-bg: var(--background-secondary);
+  --gj-border: var(--background-modifier-border);
+  --gj-text: var(--text-normal);
+  --gj-muted: var(--text-muted);
+  --gj-accent: var(--interactive-accent);
+  --gj-accent-text: var(--text-on-accent);
+  --gj-font: var(--font-text);
+  --gj-radius: 6px;
+}
+
+/* --- Theme: Dark --- */
+.gj-theme-dark .markdown-reading-view {
+  --gj-bg: #1a1a2e;
+  --gj-card-bg: #16213e;
+  --gj-border: #2a2a4a;
+  --gj-text: #e0e0e0;
+  --gj-muted: #8888aa;
+  --gj-accent: #7c5cbf;
+  --gj-accent-text: #fff;
+  --gj-font: var(--font-text);
+  --gj-radius: 8px;
+}
+
 /* --- Emotion Grid --- */
 .gj-emotion-grid {
   display: flex;
@@ -11,24 +50,31 @@
 .gj-emotion-chip {
   padding: 6px 14px;
   border-radius: 20px;
-  border: 1px solid var(--background-modifier-border);
-  background: var(--background-secondary);
-  color: var(--text-normal);
+  border: 1px solid var(--gj-border, var(--background-modifier-border));
+  background: var(--gj-card-bg, var(--background-secondary));
+  color: var(--gj-text, var(--text-normal));
   font-size: 13px;
+  font-family: var(--gj-font, var(--font-text));
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: all 0.2s ease;
   text-transform: capitalize;
+  user-select: none;
 }
 
 .gj-emotion-chip:hover {
-  border-color: var(--interactive-accent);
+  border-color: var(--gj-accent, var(--interactive-accent));
   background: var(--background-modifier-hover);
+  transform: translateY(-1px);
+}
+
+.gj-emotion-chip:active {
+  transform: scale(0.95);
 }
 
 .gj-emotion-selected {
-  background: var(--interactive-accent) !important;
-  color: var(--text-on-accent) !important;
-  border-color: var(--interactive-accent) !important;
+  background: var(--gj-accent, var(--interactive-accent)) !important;
+  color: var(--gj-accent-text, var(--text-on-accent)) !important;
+  border-color: var(--gj-accent, var(--interactive-accent)) !important;
 }
 
 /* --- Mood Tracker --- */
@@ -43,7 +89,7 @@
   font-weight: 600;
   min-width: 60px;
   font-size: 14px;
-  color: var(--text-muted);
+  color: var(--gj-muted, var(--text-muted));
 }
 
 .gj-mood-scale {
@@ -55,28 +101,32 @@
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  border: 2px solid var(--background-modifier-border);
-  background: var(--background-secondary);
-  color: var(--text-muted);
+  border: 2px solid var(--gj-border, var(--background-modifier-border));
+  background: var(--gj-card-bg, var(--background-secondary));
+  color: var(--gj-muted, var(--text-muted));
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.15s ease;
+  transition: all 0.2s ease;
   padding: 0;
 }
 
 .gj-mood-dot:hover {
-  border-color: var(--interactive-accent);
-  transform: scale(1.1);
+  border-color: var(--gj-accent, var(--interactive-accent));
+  transform: scale(1.15);
+}
+
+.gj-mood-dot:active {
+  transform: scale(0.9);
 }
 
 .gj-mood-active {
-  background: var(--interactive-accent) !important;
-  color: var(--text-on-accent) !important;
-  border-color: var(--interactive-accent) !important;
+  background: var(--gj-accent, var(--interactive-accent)) !important;
+  color: var(--gj-accent-text, var(--text-on-accent)) !important;
+  border-color: var(--gj-accent, var(--interactive-accent)) !important;
 }
 
 /* --- Time Tracker --- */
@@ -95,7 +145,7 @@
   min-width: 100px;
   font-weight: 600;
   font-size: 13px;
-  color: var(--text-muted);
+  color: var(--gj-muted, var(--text-muted));
 }
 
 .gj-time-bar {
@@ -106,9 +156,9 @@
 .gj-time-segment {
   width: 40px;
   height: 30px;
-  border: 1px solid var(--background-modifier-border);
-  background: var(--background-secondary);
-  color: var(--text-muted);
+  border: 1px solid var(--gj-border, var(--background-modifier-border));
+  background: var(--gj-card-bg, var(--background-secondary));
+  color: var(--gj-muted, var(--text-muted));
   font-size: 11px;
   cursor: pointer;
   transition: all 0.15s ease;
@@ -119,21 +169,25 @@
 }
 
 .gj-time-segment:first-child {
-  border-radius: 4px 0 0 4px;
+  border-radius: var(--gj-radius, 4px) 0 0 var(--gj-radius, 4px);
 }
 
 .gj-time-segment:last-child {
-  border-radius: 0 4px 4px 0;
+  border-radius: 0 var(--gj-radius, 4px) var(--gj-radius, 4px) 0;
 }
 
 .gj-time-segment:hover {
-  border-color: var(--interactive-accent);
+  border-color: var(--gj-accent, var(--interactive-accent));
+}
+
+.gj-time-segment:active {
+  transform: scale(0.95);
 }
 
 .gj-time-filled {
-  background: var(--interactive-accent) !important;
-  color: var(--text-on-accent) !important;
-  border-color: var(--interactive-accent) !important;
+  background: var(--gj-accent, var(--interactive-accent)) !important;
+  color: var(--gj-accent-text, var(--text-on-accent)) !important;
+  border-color: var(--gj-accent, var(--interactive-accent)) !important;
 }
 
 /* --- Priority Status --- */
@@ -151,21 +205,22 @@
 .gj-priority-num {
   font-weight: 700;
   min-width: 20px;
-  color: var(--text-muted);
+  color: var(--gj-muted, var(--text-muted));
 }
 
 .gj-priority-input {
   flex: 1;
   padding: 6px 10px;
-  border: 1px solid var(--background-modifier-border);
-  border-radius: 6px;
-  background: var(--background-secondary);
-  color: var(--text-normal);
+  border: 1px solid var(--gj-border, var(--background-modifier-border));
+  border-radius: var(--gj-radius, 6px);
+  background: var(--gj-card-bg, var(--background-secondary));
+  color: var(--gj-text, var(--text-normal));
   font-size: 14px;
+  font-family: var(--gj-font, var(--font-text));
 }
 
 .gj-priority-input:focus {
-  border-color: var(--interactive-accent);
+  border-color: var(--gj-accent, var(--interactive-accent));
   outline: none;
 }
 
@@ -177,16 +232,20 @@
 .gj-priority-btn {
   padding: 4px 10px;
   border-radius: 4px;
-  border: 1px solid var(--background-modifier-border);
-  background: var(--background-secondary);
+  border: 1px solid var(--gj-border, var(--background-modifier-border));
+  background: var(--gj-card-bg, var(--background-secondary));
   font-size: 12px;
   cursor: pointer;
   transition: all 0.15s ease;
-  color: var(--text-muted);
+  color: var(--gj-muted, var(--text-muted));
 }
 
 .gj-priority-btn:hover {
-  border-color: var(--interactive-accent);
+  border-color: var(--gj-accent, var(--interactive-accent));
+}
+
+.gj-priority-btn:active {
+  transform: scale(0.93);
 }
 
 .gj-priority-done.gj-priority-active {
@@ -222,8 +281,8 @@
   font-size: 12px;
   font-weight: 700;
   text-align: center;
-  color: var(--text-muted);
-  border-bottom: 2px solid var(--background-modifier-border);
+  color: var(--gj-muted, var(--text-muted));
+  border-bottom: 2px solid var(--gj-border, var(--background-modifier-border));
 }
 
 .gj-habit-table th:first-child {
@@ -234,6 +293,7 @@
   font-size: 13px;
   font-weight: 500;
   padding: 8px;
+  color: var(--gj-text, var(--text-normal));
 }
 
 .gj-habit-cell {
@@ -245,27 +305,32 @@
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  border: 2px solid var(--background-modifier-border);
+  border: 2px solid var(--gj-border, var(--background-modifier-border));
   margin: 0 auto;
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: all 0.2s ease;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .gj-habit-check:hover {
-  border-color: var(--interactive-accent);
+  border-color: var(--gj-accent, var(--interactive-accent));
+  transform: scale(1.1);
+}
+
+.gj-habit-check:active {
+  transform: scale(0.85);
 }
 
 .gj-habit-checked {
-  background: var(--interactive-accent) !important;
-  border-color: var(--interactive-accent) !important;
+  background: var(--gj-accent, var(--interactive-accent)) !important;
+  border-color: var(--gj-accent, var(--interactive-accent)) !important;
 }
 
 .gj-habit-checked::after {
-  content: '✓';
-  color: var(--text-on-accent);
+  content: '\2713';
+  color: var(--gj-accent-text, var(--text-on-accent));
   font-size: 14px;
   font-weight: 700;
 }
@@ -279,7 +344,7 @@
   font-size: 16px;
   font-weight: 700;
   margin-bottom: 12px;
-  color: var(--text-normal);
+  color: var(--gj-text, var(--text-normal));
 }
 
 .gj-calendar-grid {
@@ -292,7 +357,7 @@
   text-align: center;
   font-size: 11px;
   font-weight: 700;
-  color: var(--text-muted);
+  color: var(--gj-muted, var(--text-muted));
   padding: 6px;
   text-transform: uppercase;
 }
@@ -302,7 +367,7 @@
   padding: 8px 4px;
   font-size: 13px;
   border-radius: 4px;
-  color: var(--text-muted);
+  color: var(--gj-muted, var(--text-muted));
 }
 
 .gj-calendar-empty {
@@ -310,17 +375,17 @@
 }
 
 .gj-calendar-today {
-  background: var(--interactive-accent) !important;
-  color: var(--text-on-accent) !important;
+  background: var(--gj-accent, var(--interactive-accent)) !important;
+  color: var(--gj-accent-text, var(--text-on-accent)) !important;
   font-weight: 700;
   border-radius: 50%;
 }
 
 .gj-calendar-has-note {
   cursor: pointer;
-  background: var(--background-secondary);
+  background: var(--gj-card-bg, var(--background-secondary));
   font-weight: 600;
-  color: var(--text-normal);
+  color: var(--gj-text, var(--text-normal));
 }
 
 .gj-calendar-has-note:hover {
@@ -342,39 +407,53 @@
 }
 
 .gj-self-care-card {
-  border: 1px solid var(--background-modifier-border);
-  border-radius: 8px;
+  border: 1px solid var(--gj-border, var(--background-modifier-border));
+  border-radius: var(--gj-radius, 8px);
   padding: 12px;
-  background: var(--background-secondary);
+  background: var(--gj-card-bg, var(--background-secondary));
   text-align: center;
+  transition: border-color 0.2s ease;
+}
+
+.gj-self-care-card:hover {
+  border-color: var(--gj-accent, var(--interactive-accent));
 }
 
 .gj-self-care-icon {
-  font-size: 24px;
   margin-bottom: 4px;
+  display: flex;
+  justify-content: center;
+}
+
+.gj-self-care-icon svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--gj-accent, var(--interactive-accent));
 }
 
 .gj-self-care-label {
   font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--gj-muted, var(--text-muted));
   margin-bottom: 8px;
 }
 
 .gj-self-care-input {
   width: 100%;
   padding: 6px 8px;
-  border: 1px solid var(--background-modifier-border);
+  border: 1px solid var(--gj-border, var(--background-modifier-border));
   border-radius: 4px;
-  background: var(--background-primary);
-  color: var(--text-normal);
+  background: var(--gj-bg, var(--background-primary));
+  color: var(--gj-text, var(--text-normal));
   font-size: 13px;
+  font-family: var(--gj-font, var(--font-text));
   text-align: center;
+  box-sizing: border-box;
 }
 
 .gj-self-care-input:focus {
-  border-color: var(--interactive-accent);
+  border-color: var(--gj-accent, var(--interactive-accent));
   outline: none;
 }
 
@@ -389,28 +468,183 @@
 .gj-focus-chip {
   padding: 8px 18px;
   border-radius: 24px;
-  border: 2px solid var(--background-modifier-border);
-  background: var(--background-secondary);
-  color: var(--text-normal);
+  border: 2px solid var(--gj-border, var(--background-modifier-border));
+  background: var(--gj-card-bg, var(--background-secondary));
+  color: var(--gj-text, var(--text-normal));
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: all 0.2s ease;
+  user-select: none;
 }
 
 .gj-focus-chip:hover {
-  border-color: var(--interactive-accent);
+  border-color: var(--gj-accent, var(--interactive-accent));
+  transform: translateY(-1px);
+}
+
+.gj-focus-chip:active {
+  transform: scale(0.95);
 }
 
 .gj-focus-selected {
-  background: var(--interactive-accent) !important;
-  color: var(--text-on-accent) !important;
-  border-color: var(--interactive-accent) !important;
+  background: var(--gj-accent, var(--interactive-accent)) !important;
+  color: var(--gj-accent-text, var(--text-on-accent)) !important;
+  border-color: var(--gj-accent, var(--interactive-accent)) !important;
 }
 
-/* --- Paper Theme Overrides --- */
-.theme-light .gj-emotion-chip,
-.theme-light .gj-priority-input,
-.theme-light .gj-self-care-input {
-  font-family: var(--font-text);
+/* --- Schedule --- */
+.gj-schedule {
+  padding: 8px 0;
+}
+
+.gj-schedule-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 4px;
+  padding: 4px 0;
+  border-bottom: 1px solid var(--gj-border, var(--background-modifier-border));
+}
+
+.gj-schedule-row:last-child {
+  border-bottom: none;
+}
+
+.gj-schedule-time {
+  min-width: 80px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gj-muted, var(--text-muted));
+  font-family: var(--font-monospace);
+}
+
+.gj-schedule-input {
+  flex: 1;
+  padding: 5px 8px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--gj-text, var(--text-normal));
+  font-size: 14px;
+  font-family: var(--gj-font, var(--font-text));
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.gj-schedule-input:hover {
+  background: var(--gj-card-bg, var(--background-secondary));
+}
+
+.gj-schedule-input:focus {
+  border-color: var(--gj-accent, var(--interactive-accent));
+  background: var(--gj-card-bg, var(--background-secondary));
+  outline: none;
+}
+
+/* --- Workout Planner --- */
+.gj-workout {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  padding: 8px 0;
+}
+
+.gj-workout-card {
+  border: 1px solid var(--gj-border, var(--background-modifier-border));
+  border-radius: var(--gj-radius, 8px);
+  padding: 12px;
+  background: var(--gj-card-bg, var(--background-secondary));
+  transition: border-color 0.2s ease;
+}
+
+.gj-workout-card:hover {
+  border-color: var(--gj-accent, var(--interactive-accent));
+}
+
+.gj-workout-day {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--gj-accent, var(--interactive-accent));
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
+.gj-workout-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.gj-workout-field-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.gj-workout-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--gj-muted, var(--text-muted));
+}
+
+.gj-workout-input {
+  width: 100%;
+  padding: 5px 8px;
+  border: 1px solid var(--gj-border, var(--background-modifier-border));
+  border-radius: 4px;
+  background: var(--gj-bg, var(--background-primary));
+  color: var(--gj-text, var(--text-normal));
+  font-size: 13px;
+  font-family: var(--gj-font, var(--font-text));
+  box-sizing: border-box;
+}
+
+.gj-workout-input:focus {
+  border-color: var(--gj-accent, var(--interactive-accent));
+  outline: none;
+}
+
+/* --- Paper theme typography --- */
+.gj-theme-paper .markdown-reading-view h1,
+.gj-theme-paper .markdown-reading-view h2,
+.gj-theme-paper .markdown-reading-view h3 {
+  font-family: var(--gj-font);
+}
+
+.gj-theme-paper .markdown-reading-view blockquote {
+  border-left-color: var(--gj-accent);
+  font-style: italic;
+}
+
+/* --- Print Styles --- */
+@media print {
+  .gj-emotion-chip,
+  .gj-mood-dot,
+  .gj-habit-check,
+  .gj-time-segment,
+  .gj-priority-btn,
+  .gj-focus-chip {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .gj-emotion-selected,
+  .gj-mood-active,
+  .gj-habit-checked,
+  .gj-time-filled,
+  .gj-priority-active,
+  .gj-focus-selected {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .gj-schedule-input,
+  .gj-workout-input,
+  .gj-self-care-input,
+  .gj-priority-input {
+    border: none !important;
+    padding: 2px !important;
+  }
 }

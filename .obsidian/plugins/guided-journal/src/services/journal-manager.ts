@@ -1,7 +1,8 @@
-import { App, TFile, TFolder, normalizePath } from 'obsidian';
+import { App, TFile, normalizePath, Notice } from 'obsidian';
 import { GuidedJournalSettings, PluginData } from '../types';
 import { TemplateEngine } from './template-engine';
 import { QuestionBank } from './question-bank';
+import { ensureFolderRecursive, formatDate, getDayOfWeek, getISOWeek } from '../utils';
 
 export class JournalManager {
   private app: App;
@@ -25,37 +26,8 @@ export class JournalManager {
     this.saveData = saveData;
   }
 
-  private async ensureFolder(path: string): Promise<void> {
-    const normalized = normalizePath(path);
-    const existing = this.app.vault.getAbstractFileByPath(normalized);
-    if (!existing) {
-      await this.app.vault.createFolder(normalized);
-    }
-  }
-
   private getToday(): Date {
     return new Date();
-  }
-
-  private formatDate(d: Date): string {
-    const y = d.getFullYear();
-    const m = String(d.getMonth() + 1).padStart(2, '0');
-    const day = String(d.getDate()).padStart(2, '0');
-    return `${y}-${m}-${day}`;
-  }
-
-  private getDayOfWeek(d: Date): string {
-    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    return days[d.getDay()];
-  }
-
-  private getISOWeek(d: Date): string {
-    const date = new Date(d.getTime());
-    date.setHours(0, 0, 0, 0);
-    date.setDate(date.getDate() + 3 - (date.getDay() + 6) % 7);
-    const week1 = new Date(date.getFullYear(), 0, 4);
-    const weekNum = 1 + Math.round(((date.getTime() - week1.getTime()) / 86400000 - 3 + (week1.getDay() + 6) % 7) / 7);
-    return `${date.getFullYear()}-W${String(weekNum).padStart(2, '0')}`;
   }
 
   private getWeekStart(d: Date): Date {
@@ -78,44 +50,54 @@ export class JournalManager {
     return d.getDay() === 0;
   }
 
+  // Fix #8: Safe vault operation wrapper
+  private async safeCreate(filePath: string, content: string): Promise<TFile | null> {
+    try {
+      return await this.app.vault.create(filePath, content);
+    } catch (e) {
+      console.error(`Guided Journal: Failed to create ${filePath}`, e);
+      new Notice(`Guided Journal: Failed to create ${filePath}`);
+      return null;
+    }
+  }
+
   async createDailyIfNeeded(): Promise<TFile | null> {
     if (!this.settings.autoCreateDaily) return null;
 
     const today = this.getToday();
-    const dateStr = this.formatDate(today);
+    const dateStr = formatDate(today);
     const filePath = normalizePath(`${this.settings.dailyFolder}/${dateStr}.md`);
 
     const existing = this.app.vault.getAbstractFileByPath(filePath);
     if (existing) return existing as TFile;
 
-    await this.ensureFolder(this.settings.dailyFolder);
-    const content = this.templateEngine.generateDaily(dateStr, this.getDayOfWeek(today));
-    return await this.app.vault.create(filePath, content);
+    await ensureFolderRecursive(this.app, this.settings.dailyFolder);
+    const content = this.templateEngine.generateDaily(dateStr, getDayOfWeek(today));
+    return await this.safeCreate(filePath, content);
   }
 
   async createWeeklyIfNeeded(): Promise<TFile | null> {
     if (!this.settings.autoCreateWeekly) return null;
 
     const today = this.getToday();
-    // Only auto-create on week start day, but also create if it doesn't exist
     const weekStart = this.getWeekStart(today);
     const weekEnd = this.getWeekEnd(weekStart);
-    const weekLabel = this.getISOWeek(today);
+    const { label: weekLabel, weekNum } = getISOWeek(today);
     const filePath = normalizePath(`${this.settings.weeklyFolder}/${weekLabel}.md`);
 
     const existing = this.app.vault.getAbstractFileByPath(filePath);
     if (existing) return existing as TFile;
 
-    // Only auto-create on the week start day
     if (!this.isWeekStartDay(today)) return null;
 
-    await this.ensureFolder(this.settings.weeklyFolder);
+    await ensureFolderRecursive(this.app, this.settings.weeklyFolder);
     const content = this.templateEngine.generateWeekly(
       weekLabel,
-      this.formatDate(weekStart),
-      this.formatDate(weekEnd),
+      formatDate(weekStart),
+      formatDate(weekEnd),
+      weekNum,
     );
-    return await this.app.vault.create(filePath, content);
+    return await this.safeCreate(filePath, content);
   }
 
   async createMonthlyIfNeeded(): Promise<TFile | null> {
@@ -132,26 +114,26 @@ export class JournalManager {
     const existing = this.app.vault.getAbstractFileByPath(filePath);
     if (existing) return existing as TFile;
 
-    await this.ensureFolder(this.settings.monthlyFolder);
+    await ensureFolderRecursive(this.app, this.settings.monthlyFolder);
     const content = this.templateEngine.generateMonthly(monthLabel, year, month);
-    return await this.app.vault.create(filePath, content);
+    return await this.safeCreate(filePath, content);
   }
 
   async createDigDeeperIfNeeded(): Promise<TFile | null> {
     if (!this.settings.autoCreateDigDeeper) return null;
 
     const today = this.getToday();
-    const dateStr = this.formatDate(today);
+    const dateStr = formatDate(today);
     const filePath = normalizePath(`${this.settings.digDeeperFolder}/${dateStr}-prompt.md`);
 
     const existing = this.app.vault.getAbstractFileByPath(filePath);
     if (existing) return existing as TFile;
 
-    await this.ensureFolder(this.settings.digDeeperFolder);
+    await ensureFolderRecursive(this.app, this.settings.digDeeperFolder);
     const { id, question } = this.questionBank.getQuestionForDate(dateStr);
     await this.saveData();
     const content = this.templateEngine.generateDigDeeper(dateStr, id, question);
-    return await this.app.vault.create(filePath, content);
+    return await this.safeCreate(filePath, content);
   }
 
   async runStartupRoutine(): Promise<TFile | null> {
@@ -162,37 +144,37 @@ export class JournalManager {
     return daily;
   }
 
-  // Manual commands
   async createTodaysJournal(): Promise<TFile | null> {
     const today = this.getToday();
-    const dateStr = this.formatDate(today);
+    const dateStr = formatDate(today);
     const filePath = normalizePath(`${this.settings.dailyFolder}/${dateStr}.md`);
 
     const existing = this.app.vault.getAbstractFileByPath(filePath);
     if (existing) return existing as TFile;
 
-    await this.ensureFolder(this.settings.dailyFolder);
-    const content = this.templateEngine.generateDaily(dateStr, this.getDayOfWeek(today));
-    return await this.app.vault.create(filePath, content);
+    await ensureFolderRecursive(this.app, this.settings.dailyFolder);
+    const content = this.templateEngine.generateDaily(dateStr, getDayOfWeek(today));
+    return await this.safeCreate(filePath, content);
   }
 
   async createThisWeeksJournal(): Promise<TFile | null> {
     const today = this.getToday();
     const weekStart = this.getWeekStart(today);
     const weekEnd = this.getWeekEnd(weekStart);
-    const weekLabel = this.getISOWeek(today);
+    const { label: weekLabel, weekNum } = getISOWeek(today);
     const filePath = normalizePath(`${this.settings.weeklyFolder}/${weekLabel}.md`);
 
     const existing = this.app.vault.getAbstractFileByPath(filePath);
     if (existing) return existing as TFile;
 
-    await this.ensureFolder(this.settings.weeklyFolder);
+    await ensureFolderRecursive(this.app, this.settings.weeklyFolder);
     const content = this.templateEngine.generateWeekly(
       weekLabel,
-      this.formatDate(weekStart),
-      this.formatDate(weekEnd),
+      formatDate(weekStart),
+      formatDate(weekEnd),
+      weekNum,
     );
-    return await this.app.vault.create(filePath, content);
+    return await this.safeCreate(filePath, content);
   }
 
   async createThisMonthsJournal(): Promise<TFile | null> {
@@ -205,19 +187,69 @@ export class JournalManager {
     const existing = this.app.vault.getAbstractFileByPath(filePath);
     if (existing) return existing as TFile;
 
-    await this.ensureFolder(this.settings.monthlyFolder);
+    await ensureFolderRecursive(this.app, this.settings.monthlyFolder);
     const content = this.templateEngine.generateMonthly(monthLabel, year, month);
-    return await this.app.vault.create(filePath, content);
+    return await this.safeCreate(filePath, content);
   }
 
   async openTodaysDaily(): Promise<void> {
     const today = this.getToday();
-    const dateStr = this.formatDate(today);
+    const dateStr = formatDate(today);
     const filePath = normalizePath(`${this.settings.dailyFolder}/${dateStr}.md`);
 
     let file = this.app.vault.getAbstractFileByPath(filePath);
     if (!file) {
       file = await this.createTodaysJournal();
+    }
+    if (file && file instanceof TFile) {
+      await this.app.workspace.getLeaf().openFile(file);
+    }
+  }
+
+  // Fix #12: Dig Deeper open command
+  async openTodaysDigDeeper(): Promise<void> {
+    const today = this.getToday();
+    const dateStr = formatDate(today);
+    const filePath = normalizePath(`${this.settings.digDeeperFolder}/${dateStr}-prompt.md`);
+
+    let file = this.app.vault.getAbstractFileByPath(filePath);
+    if (!file) {
+      file = await this.createDigDeeperIfNeeded();
+    }
+    if (file && file instanceof TFile) {
+      await this.app.workspace.getLeaf().openFile(file);
+    }
+  }
+
+  // Fix #18: Navigate to adjacent daily notes
+  async openDailyByOffset(offset: number): Promise<void> {
+    const today = new Date();
+    // Find the current note's date from the active file
+    const activeFile = this.app.workspace.getActiveFile();
+    let baseDate = today;
+
+    if (activeFile) {
+      // Try to extract date from filename like "2026-02-14.md"
+      const match = activeFile.basename.match(/^(\d{4}-\d{2}-\d{2})/);
+      if (match) {
+        const parsed = new Date(match[1] + 'T12:00:00');
+        if (!isNaN(parsed.getTime())) {
+          baseDate = parsed;
+        }
+      }
+    }
+
+    const targetDate = new Date(baseDate);
+    targetDate.setDate(targetDate.getDate() + offset);
+    const dateStr = formatDate(targetDate);
+    const filePath = normalizePath(`${this.settings.dailyFolder}/${dateStr}.md`);
+
+    let file = this.app.vault.getAbstractFileByPath(filePath);
+    if (!file) {
+      // Create the note for that date
+      await ensureFolderRecursive(this.app, this.settings.dailyFolder);
+      const content = this.templateEngine.generateDaily(dateStr, getDayOfWeek(targetDate));
+      file = await this.safeCreate(filePath, content);
     }
     if (file && file instanceof TFile) {
       await this.app.workspace.getLeaf().openFile(file);

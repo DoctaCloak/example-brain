@@ -237,7 +237,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Journal/2026-02-14.md",
+                "file": "Journal/Daily/2026-02-14.md",
                 "mode": "source",
                 "source": false
               },
@@ -407,13 +407,18 @@
       "command-palette:Open command palette": false,
       "bases:Create new base": false,
       "obsidian-git:Open Git source control": false,
-      "templater-obsidian:Templater": false
+      "templater-obsidian:Templater": false,
+      "guided-journal:Open today's journal": false
     }
   },
   "active": "c59765b167f3c02a",
   "lastOpenFiles": [
-    "0 Inbox/Untitled 1.md",
+    "Journal/Dig-Deeper/2026-02-14-prompt.md",
+    "Journal/Daily/2026-02-14.md",
     "Journal/2026-02-14.md",
+    "Journal/Dig-Deeper",
+    "Journal/Daily",
+    "0 Inbox/Untitled 1.md",
     "Output",
     "Input",
     "Zettlekasten",
@@ -443,8 +448,6 @@
     "1 Projects/Holiday 2024/Idea about Holiday in Norway.md",
     "1 Projects/Holiday 2024",
     "1 Projects/Untitled.md",
-    "Untitled.md",
-    "4 Archive",
-    "3 Resources"
+    "Untitled.md"
   ]
 }

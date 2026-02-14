@@ -1,11 +1,12 @@
 import { MarkdownPostProcessorContext, App } from 'obsidian';
+import { getFileFromPath, safeFrontmatterUpdate } from '../utils';
 
 const TIME_LEVELS = [0, 0.5, 1, 2, 3, 4, 5, 6, 7, 8];
 const TIME_LABELS = ['0', '0.5', '1', '2', '3', '4', '5', '6', '7', '8+'];
 
 export function registerTimeTrackerProcessor(app: App) {
   return (source: string, el: HTMLElement, ctx: MarkdownPostProcessorContext) => {
-    const file = app.workspace.getActiveFile();
+    const file = getFileFromPath(app, ctx.sourcePath);
     if (!file) return;
 
     const cache = app.metadataCache.getFileCache(file);
@@ -13,10 +14,10 @@ export function registerTimeTrackerProcessor(app: App) {
 
     const container = el.createDiv({ cls: 'gj-time-tracker' });
 
-    const categories: { key: string; label: string; fmKey: string }[] = [
-      { key: 'tasks', label: 'Tasks', fmKey: 'tasks' },
-      { key: 'distractions', label: 'Distractions', fmKey: 'distractions' },
-      { key: 'self_care', label: 'Self-Care', fmKey: 'self_care' },
+    const categories: { label: string; fmKey: string }[] = [
+      { label: 'Tasks', fmKey: 'tasks' },
+      { label: 'Distractions', fmKey: 'distractions' },
+      { label: 'Self-Care', fmKey: 'self_care' },
     ];
 
     categories.forEach(cat => {
@@ -32,15 +33,14 @@ export function registerTimeTrackerProcessor(app: App) {
           text: TIME_LABELS[idx],
         });
         segment.addEventListener('click', async () => {
-          const currentFile = app.workspace.getActiveFile();
-          if (!currentFile) return;
+          const f = getFileFromPath(app, ctx.sourcePath);
+          if (!f) return;
 
-          await app.fileManager.processFrontMatter(currentFile, (fm) => {
+          await safeFrontmatterUpdate(app, f, (fm) => {
             if (!fm.time_tracker) fm.time_tracker = { tasks: 0, distractions: 0, self_care: 0 };
             fm.time_tracker[cat.fmKey] = level;
           });
 
-          // Update UI
           bar.querySelectorAll('.gj-time-segment').forEach((seg, sIdx) => {
             if (TIME_LEVELS[sIdx] <= level && level > 0) {
               seg.addClass('gj-time-filled');

@@ -1,16 +1,17 @@
 import { MarkdownPostProcessorContext, App } from 'obsidian';
+import { getFileFromPath, safeFrontmatterUpdate } from '../utils';
 
 const STATUSES = ['pending', 'done', 'delay', 'delete'] as const;
 const STATUS_LABELS: Record<string, string> = {
-  pending: '○',
-  done: '✓ Done',
-  delay: '◷ Delay',
-  delete: '✕ Delete',
+  pending: '',
+  done: 'Done',
+  delay: 'Delay',
+  delete: 'Delete',
 };
 
 export function registerPriorityProcessor(app: App) {
   return (source: string, el: HTMLElement, ctx: MarkdownPostProcessorContext) => {
-    const file = app.workspace.getActiveFile();
+    const file = getFileFromPath(app, ctx.sourcePath);
     if (!file) return;
 
     const cache = app.metadataCache.getFileCache(file);
@@ -24,45 +25,40 @@ export function registerPriorityProcessor(app: App) {
 
     priorities.forEach((priority: { text: string; status: string }, idx: number) => {
       const row = container.createDiv({ cls: 'gj-priority-row' });
-
-      // Number
       row.createDiv({ cls: 'gj-priority-num', text: `${idx + 1}.` });
 
-      // Text input
       const input = row.createEl('input', {
         cls: 'gj-priority-input',
         attr: { type: 'text', placeholder: 'Enter priority...', value: priority.text || '' },
       });
       input.addEventListener('change', async () => {
-        const currentFile = app.workspace.getActiveFile();
-        if (!currentFile) return;
-        await app.fileManager.processFrontMatter(currentFile, (fm) => {
+        const f = getFileFromPath(app, ctx.sourcePath);
+        if (!f) return;
+        await safeFrontmatterUpdate(app, f, (fm) => {
           if (!fm.priorities) fm.priorities = [];
           if (!fm.priorities[idx]) fm.priorities[idx] = { text: '', status: 'pending' };
           fm.priorities[idx].text = input.value;
         });
       });
 
-      // Status buttons
       const statusGroup = row.createDiv({ cls: 'gj-priority-status-group' });
       STATUSES.forEach(status => {
-        if (status === 'pending') return; // Don't show pending as a button
+        if (status === 'pending') return;
         const btn = statusGroup.createEl('button', {
           cls: `gj-priority-btn gj-priority-${status} ${priority.status === status ? 'gj-priority-active' : ''}`,
           text: STATUS_LABELS[status],
         });
         btn.addEventListener('click', async () => {
-          const currentFile = app.workspace.getActiveFile();
-          if (!currentFile) return;
+          const f = getFileFromPath(app, ctx.sourcePath);
+          if (!f) return;
 
           const newStatus = priority.status === status ? 'pending' : status;
-          await app.fileManager.processFrontMatter(currentFile, (fm) => {
+          await safeFrontmatterUpdate(app, f, (fm) => {
             if (!fm.priorities) fm.priorities = [];
             if (!fm.priorities[idx]) fm.priorities[idx] = { text: '', status: 'pending' };
             fm.priorities[idx].status = newStatus;
           });
 
-          // Update UI
           statusGroup.querySelectorAll('.gj-priority-btn').forEach(b => b.removeClass('gj-priority-active'));
           if (newStatus !== 'pending') {
             btn.addClass('gj-priority-active');

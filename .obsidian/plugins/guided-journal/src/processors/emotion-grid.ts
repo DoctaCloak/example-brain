@@ -1,14 +1,12 @@
 import { MarkdownPostProcessorContext, App } from 'obsidian';
+import { getFileFromPath, safeFrontmatterUpdate } from '../utils';
 
 export function registerEmotionGridProcessor(app: App) {
   return (source: string, el: HTMLElement, ctx: MarkdownPostProcessorContext) => {
     const emotions = source.trim().split(',').map(e => e.trim()).filter(e => e);
     if (emotions.length === 0) return;
 
-    const container = el.createDiv({ cls: 'gj-emotion-grid' });
-
-    // Read current selections from frontmatter
-    const file = app.workspace.getActiveFile();
+    const file = getFileFromPath(app, ctx.sourcePath);
     let selected: string[] = [];
     if (file) {
       const cache = app.metadataCache.getFileCache(file);
@@ -16,6 +14,8 @@ export function registerEmotionGridProcessor(app: App) {
         selected = cache.frontmatter.emotions;
       }
     }
+
+    const container = el.createDiv({ cls: 'gj-emotion-grid' });
 
     emotions.forEach(emotion => {
       const chip = container.createEl('button', {
@@ -26,10 +26,10 @@ export function registerEmotionGridProcessor(app: App) {
         chip.addClass('gj-emotion-selected');
       }
       chip.addEventListener('click', async () => {
-        const currentFile = app.workspace.getActiveFile();
-        if (!currentFile) return;
+        const f = getFileFromPath(app, ctx.sourcePath);
+        if (!f) return;
 
-        await app.fileManager.processFrontMatter(currentFile, (fm) => {
+        await safeFrontmatterUpdate(app, f, (fm) => {
           if (!fm.emotions) fm.emotions = [];
           const idx = fm.emotions.indexOf(emotion);
           if (idx >= 0) {

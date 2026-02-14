@@ -1,9 +1,10 @@
 import { MarkdownPostProcessorContext, App } from 'obsidian';
 import { DAYS_SHORT } from '../constants';
+import { getFileFromPath, safeFrontmatterUpdate } from '../utils';
 
 export function registerHabitTrackerProcessor(app: App) {
   return (source: string, el: HTMLElement, ctx: MarkdownPostProcessorContext) => {
-    const file = app.workspace.getActiveFile();
+    const file = getFileFromPath(app, ctx.sourcePath);
     if (!file) return;
 
     const cache = app.metadataCache.getFileCache(file);
@@ -12,13 +13,11 @@ export function registerHabitTrackerProcessor(app: App) {
     const container = el.createDiv({ cls: 'gj-habit-tracker' });
     const table = container.createEl('table', { cls: 'gj-habit-table' });
 
-    // Header
     const thead = table.createEl('thead');
     const headerRow = thead.createEl('tr');
     headerRow.createEl('th', { text: 'Habit' });
     DAYS_SHORT.forEach(d => headerRow.createEl('th', { text: d }));
 
-    // Body
     const tbody = table.createEl('tbody');
     const habitNames = Object.keys(habits).filter(h => h.trim());
 
@@ -41,10 +40,10 @@ export function registerHabitTrackerProcessor(app: App) {
           cls: `gj-habit-check ${checked ? 'gj-habit-checked' : ''}`,
         });
         checkbox.addEventListener('click', async () => {
-          const currentFile = app.workspace.getActiveFile();
-          if (!currentFile) return;
+          const f = getFileFromPath(app, ctx.sourcePath);
+          if (!f) return;
 
-          await app.fileManager.processFrontMatter(currentFile, (fm) => {
+          await safeFrontmatterUpdate(app, f, (fm) => {
             if (!fm.habits) fm.habits = {};
             if (!fm.habits[habitName]) fm.habits[habitName] = [false, false, false, false, false, false, false];
             fm.habits[habitName][dayIdx] = !fm.habits[habitName][dayIdx];
