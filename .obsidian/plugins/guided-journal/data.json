@@ -8,5 +8,30 @@
       "lastQuestionDate": "2026-02-14",
       "lastQuestionId": 177
     }
+  },
+  "settings": {
+    "dailyFolder": "Journal/Daily",
+    "weeklyFolder": "Journal/Weekly",
+    "monthlyFolder": "Journal/Monthly",
+    "digDeeperFolder": "Journal/Dig-Deeper",
+    "autoCreateDaily": true,
+    "autoCreateWeekly": true,
+    "autoCreateMonthly": true,
+    "autoCreateDigDeeper": true,
+    "openDailyOnStartup": true,
+    "weekStartDay": "monday",
+    "customEmotions": [],
+    "defaultHabits": [],
+    "selfCareCategories": [
+      "Physical",
+      "Emotional",
+      "Professional",
+      "Social",
+      "Financial",
+      "Spiritual"
+    ],
+    "customQuestions": [],
+    "dateFormat": "YYYY-MM-DD",
+    "journalTheme": "paper"
   }
 }
