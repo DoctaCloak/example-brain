@@ -244,9 +244,21 @@
               "icon": "lucide-file",
               "title": "Untitled 1"
             }
+          },
+          {
+            "id": "a8dbe93bf180c17e",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.11.7"
+              },
+              "icon": "lucide-book-up",
+              "title": "Release Notes 1.11.7"
+            }
           }
         ],
-        "currentTab": 16
+        "currentTab": 17
       }
     ],
     "direction": "vertical"
@@ -410,7 +422,7 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "c59765b167f3c02a",
+  "active": "a8dbe93bf180c17e",
   "lastOpenFiles": [
     "Templates/Pure Template.md",
     "0 Inbox/Untitled 1.md",
