@@ -3,11 +3,12 @@
     "questionBank": {
       "usedIds": [
         177,
-        -915682115
+        -915682115,
+        -1596498595
       ],
       "currentCycle": 1,
-      "lastQuestionDate": "2026-02-15",
-      "lastQuestionId": 158
+      "lastQuestionDate": "2026-02-18",
+      "lastQuestionId": 190
     }
   },
   "settings": {

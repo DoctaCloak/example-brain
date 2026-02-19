@@ -223,12 +223,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Journal/Daily/2026-02-15.md",
+                "file": "Journal/Daily/2026-02-18.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-02-15"
+              "title": "2026-02-18"
             }
           }
         ],
@@ -399,13 +399,15 @@
   },
   "active": "aca6a40107f73c92",
   "lastOpenFiles": [
+    "Journal/Dig-Deeper/2026-02-14-prompt.md",
+    "Journal/Dig-Deeper/2026-02-18-prompt.md",
+    "Journal/Daily/2026-02-18.md",
+    "Journal/Daily/2026-02-15.md",
     "Journal/Daily/2026-02-14.md",
     "Journal/Dig-Deeper/2026-02-15-prompt.md",
-    "Journal/Daily/2026-02-15.md",
     "0 Inbox/2026-02-13.md",
     "0 Inbox/2026-02-15.md",
     "Templates/Zettle Template.md",
-    "Journal/Dig-Deeper/2026-02-14-prompt.md",
     "Journal/Dig-Deeper",
     "Journal/Daily",
     "Journal/2026-02-14.md",
@@ -430,8 +432,6 @@
     "Welcome.md",
     "neovimnote.md",
     "3 Resources/Filmmaking/Filmmaking.md",
-    "1 Projects/Holiday 2024/Planning Holiday 2024.md",
-    "1 Projects/Holiday 2024/Sweden is a great country to hike in.md",
     "2 Areas/Tech Blog",
     "3 Resources/Filmmaking",
     "1 Projects/Holiday 2024"
