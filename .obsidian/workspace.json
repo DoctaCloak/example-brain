@@ -223,12 +223,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Journal/Daily/2026-02-18.md",
+                "file": "Journal/Daily/2026-02-23.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-02-18"
+              "title": "2026-02-23"
             }
           }
         ],
@@ -399,8 +399,16 @@
   },
   "active": "aca6a40107f73c92",
   "lastOpenFiles": [
-    "Journal/Dig-Deeper/2026-02-18-prompt.md",
+    "Journal/Daily/2026-02-22.md",
+    "Journal/Dig-Deeper/2026-02-23-prompt.md",
+    "Journal/Weekly/2026-W09.md",
+    "Journal/Weekly",
+    "Journal/Daily/2026-02-23.md",
+    "Journal/Daily/2026-02-19.md",
+    "Journal/Dig-Deeper/2026-02-22-prompt.md",
     "Journal/Daily/2026-02-18.md",
+    "Journal/Dig-Deeper/2026-02-19-prompt.md",
+    "Journal/Dig-Deeper/2026-02-18-prompt.md",
     "Journal/Dig-Deeper/2026-02-14-prompt.md",
     "Journal/Daily/2026-02-15.md",
     "Journal/Daily/2026-02-14.md",
@@ -424,16 +432,8 @@
     "0 Inbox/Azure Containers.md",
     "2 Areas/Tech Blog/Article - New AG for Containers in Azure.md",
     "0 Inbox/Tachychardia.md",
-    "0 Inbox/neovimnote.md",
-    "0 Inbox/Hello World.md",
-    "0 Inbox/Hello.md",
-    "PARA.md",
     "Templates",
-    "Welcome.md",
-    "neovimnote.md",
-    "3 Resources/Filmmaking/Filmmaking.md",
     "2 Areas/Tech Blog",
-    "3 Resources/Filmmaking",
-    "1 Projects/Holiday 2024"
+    "3 Resources/Filmmaking"
   ]
 }
