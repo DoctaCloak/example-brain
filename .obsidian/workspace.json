@@ -223,12 +223,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Journal/Daily/2026-02-23.md",
+                "file": "Journal/Daily/2026-02-26.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-02-23"
+              "title": "2026-02-26"
             }
           }
         ],
@@ -399,11 +399,15 @@
   },
   "active": "aca6a40107f73c92",
   "lastOpenFiles": [
+    "Journal/Daily/2026-02-25.md",
+    "Journal/Dig-Deeper/2026-02-26-prompt.md",
+    "Journal/Daily/2026-02-26.md",
+    "Journal/Daily/2026-02-23.md",
+    "Journal/Dig-Deeper/2026-02-25-prompt.md",
     "Journal/Daily/2026-02-22.md",
     "Journal/Dig-Deeper/2026-02-23-prompt.md",
     "Journal/Weekly/2026-W09.md",
     "Journal/Weekly",
-    "Journal/Daily/2026-02-23.md",
     "Journal/Daily/2026-02-19.md",
     "Journal/Dig-Deeper/2026-02-22-prompt.md",
     "Journal/Daily/2026-02-18.md",
@@ -428,10 +432,6 @@
     "0 Inbox/Untitled.md",
     "0 Inbox/Untitled 2.md",
     "2 Areas/Tech Blog/DevOps Containers.md",
-    "0 Inbox/Tachycardia.md",
-    "0 Inbox/Azure Containers.md",
-    "2 Areas/Tech Blog/Article - New AG for Containers in Azure.md",
-    "0 Inbox/Tachychardia.md",
     "Templates",
     "2 Areas/Tech Blog",
     "3 Resources/Filmmaking"
