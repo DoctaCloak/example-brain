@@ -221,14 +221,17 @@
             "id": "aca6a40107f73c92",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "canvas",
               "state": {
-                "file": "Journal/Daily/2026-02-26.md",
-                "mode": "source",
-                "source": false
+                "file": "Untitled.canvas",
+                "viewState": {
+                  "x": 0,
+                  "y": 0,
+                  "zoom": 0
+                }
               },
-              "icon": "lucide-file",
-              "title": "2026-02-26"
+              "icon": "lucide-layout-dashboard",
+              "title": "Untitled"
             }
           }
         ],
@@ -394,14 +397,18 @@
       "bases:Create new base": false,
       "obsidian-git:Open Git source control": false,
       "templater-obsidian:Templater": false,
-      "guided-journal:Open today's journal": false
+      "guided-journal:Open today's journal": false,
+      "obsidian-kanban:Create new board": false
     }
   },
   "active": "aca6a40107f73c92",
   "lastOpenFiles": [
+    "Untitled Kanban.md",
+    "Untitled.canvas",
+    "PARA.md",
+    "Journal/Daily/2026-02-26.md",
     "Journal/Daily/2026-02-25.md",
     "Journal/Dig-Deeper/2026-02-26-prompt.md",
-    "Journal/Daily/2026-02-26.md",
     "Journal/Daily/2026-02-23.md",
     "Journal/Dig-Deeper/2026-02-25-prompt.md",
     "Journal/Daily/2026-02-22.md",
@@ -429,9 +436,6 @@
     "Zettlekasten",
     "Journal",
     "Templates/Pure Template.md",
-    "0 Inbox/Untitled.md",
-    "0 Inbox/Untitled 2.md",
-    "2 Areas/Tech Blog/DevOps Containers.md",
     "Templates",
     "2 Areas/Tech Blog",
     "3 Resources/Filmmaking"
